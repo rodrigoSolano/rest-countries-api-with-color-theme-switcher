@@ -53,7 +53,7 @@ export const DropdownMenu = styled.div`
   border-radius: 0.5rem;
   display: ${({ show }) => (show ? "flex" : "none")};
   position: ${({ show }) => (show ? "absolute" : "relative")};
-  bottom: ${({ show }) => (show ? "-19.5rem" : "0")};
+  bottom: ${({ show }) => (show ? "-23rem" : "0")};
 `;
 
 export const DropdownElement = styled.p`

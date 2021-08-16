@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import CountriesContext from "../../context/CountriesContext";
+import { filters } from "../../constants/constants";
 import {
   Dropdown as DropdownContainer,
   DropdownTrigger,
@@ -8,7 +9,7 @@ import {
   DropdownElement,
 } from "./Dropdown.elements";
 
-const Dropdown = ({ defaultValue, elements }) => {
+const Dropdown = () => {
   const { filterByRegion, setFilter, filter } = useContext(CountriesContext);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -26,7 +27,7 @@ const Dropdown = ({ defaultValue, elements }) => {
       <DropdownTrigger onClick={handleClick}>
         {filter === "" ? (
           <DropdownElement isDefaultValue={true}>
-            {defaultValue}
+            {filters[0].label}
           </DropdownElement>
         ) : (
           <DropdownElement isDefaultValue={true}>{filter}</DropdownElement>
@@ -35,9 +36,9 @@ const Dropdown = ({ defaultValue, elements }) => {
       </DropdownTrigger>
       {showMenu && (
         <DropdownMenu show={showMenu}>
-          {elements.map(({ value }) => (
-            <DropdownElement key={value} onClick={() => changeFilter(value)}>
-              {value}
+          {filters.map(({ label, value }) => (
+            <DropdownElement key={label} onClick={() => changeFilter(value)}>
+              {label}
             </DropdownElement>
           ))}
         </DropdownMenu>
@@ -46,4 +47,4 @@ const Dropdown = ({ defaultValue, elements }) => {
   );
 };
 
-export default Dropdown;
+export default React.memo(Dropdown);

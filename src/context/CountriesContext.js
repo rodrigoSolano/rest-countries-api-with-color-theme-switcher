@@ -11,6 +11,7 @@ const CountriesProvider = ({ children }) => {
   const [filter, setFilter] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
 
+
   useEffect(() => {
     getAllContries();
   }, []);
@@ -54,7 +55,6 @@ const CountriesProvider = ({ children }) => {
   };
 
   const searchByNameAndRegion = () => {
-
     setFilteredCountries(
       allCountries.filter(
         ({ name, region }) =>
